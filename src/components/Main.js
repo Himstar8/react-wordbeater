@@ -26,8 +26,10 @@ class Main extends Component {
     return (
       <Wrapper>
         <h4>
-          Type the given word withing <span>{this.props.timer}</span> seconds{' '}
+          Type the given word withing <span>{this.props.selectedTimer}</span>{' '}
+          seconds
         </h4>
+
         <Input>
           <span>{this.props.word}</span>
           <input
@@ -35,9 +37,18 @@ class Main extends Component {
             placeholder="Start typing here..."
             onChange={this.ChangeHandler}
             value={this.state.word}
+            disabled={!this.props.isPlaying}
             autoFocus
           />
-          <span>Game Over!!!</span>
+          <span>
+            {this.props.isPlaying ? (
+              'Correct ^_^'
+            ) : (
+              <React.Fragment>
+                Game Over :( <Button onClick={this.props.replay}>Replay</Button>
+              </React.Fragment>
+            )}
+          </span>
         </Input>
         <Footer>
           <span>Time left: {this.props.timer}</span>
@@ -84,8 +95,6 @@ const Wrapper = Styled.div`
 const Input = Styled.div`
                 text-align: center;
                 grid-area: main; 
-                
-                
                 padding: .375rem .75rem;
                 
 
@@ -112,6 +121,17 @@ const Input = Styled.div`
                   margin-top: 5rem;
                   font-size: 1.5rem;
                 }
+`;
+
+const Button = Styled.button`
+                padding: .3rem, .2rem;
+                background-color: #81c784;
+                color: #fff;
+                border-radius: .2rem;
+                font-size: 1.2rem;
+                cursor: pointer;
+                margin-left: 1rem;
+                
 `;
 
 export default Main;

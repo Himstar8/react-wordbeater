@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Styled from 'styled-components';
 
-class Instructions extends Component {
-  render() {
-    return (
-      <Card>
-        <p>
-          Type each word in the given amount of seconds to score. To play again
-          just type the current word. Your score will reset.
-        </p>
-      </Card>
-    );
-  }
-}
+const Instructions = props => (
+  <Card>
+    <p>
+      Type each word in the given amount of seconds to score. To play again just
+      type the current word. Your score will reset.
+    </p>
+  </Card>
+);
 
 const Card = Styled.div`
               max-width: 70vw;
@@ -22,7 +18,7 @@ const Card = Styled.div`
               padding: .3rem;
               border-radius: 5px;
               margin: 0 auto;
-              max-heigth: 5vh;
+              
              
 `;
 
